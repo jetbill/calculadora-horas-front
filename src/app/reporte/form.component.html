@@ -1,0 +1,69 @@
+
+
+<div class="card bg-dark text-white">
+  <div class="card-header">{{ titulo }}</div>
+  <div class="card-body">
+
+    <form #reporteForm="ngForm">
+      <div class="form-group row">
+        <label for="codigo" class="col-form-label col-sm-2">Codigo tecnico</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="reporte.codigoTecnico" name="codigo" #codigo="ngModel">
+          
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="codigoservicio" class="col-form-label col-sm-2">codigo servicio</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="reporte.codigoServicio" name="codigoservicio" #codigoservicio="ngModel">
+          <div class="alert alert-danger" *ngIf="codigoservicio.invalid && (codigoservicio.dirty || codigoservicio.touched)">
+            <div *ngIf="codigoservicio.errors.required">
+              codigo  requerido
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="horainicio" class="col-form-label col-sm-2">hora inicio</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="reporte.horaInicio" name="horainicio" #horainicio="ngModel">
+          <div class="alert alert-danger" *ngIf="horainicio.invalid && (horainicio.dirty || horainicio.touched)">
+            <div *ngIf="horainicio.errors.required">
+              hora requerida
+            </div>
+            <div *ngIf="horainicio.errors.horainicio">
+              la hora debe tener un formato válido
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="horafinal" class="col-form-label col-sm-2">hora final</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="reporte.horaFinal" name="horafinal" #horafinal="ngModel">
+          <div class="alert alert-danger" *ngIf="horafinal.invalid && (horafinal.dirty || horafinal.touched)">
+            <div *ngIf="horafinal.errors.required">
+              hora requerida
+            </div>
+            <div *ngIf="horafinal.errors.horafinal">
+              la hora debe tener un formato válido
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button class="btn btn-primary" role="button" (click)='create()'>Crear</button>
+
+
+        </div>
+      </div>
+
+
+    </form>
+
+  </div>
+</div>

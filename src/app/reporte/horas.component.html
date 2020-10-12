@@ -1,0 +1,40 @@
+
+<div class="card bg-dark text-white">
+  <div class="card-header">{{ titulo }}</div>
+  <div class="card-body">
+
+    <form #horaForm="ngForm">
+      <div class="form-group row">
+        <label for="codigo" class="col-form-label col-sm-2">Codigo tecnico</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="hora.codigoTecnico" name="codigo" #codigo="ngModel">
+
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="dia" class="col-form-label col-sm-2">Dia de la semana</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="hora.diaSemana" name="dia" #dia="ngModel">
+          <div class="alert alert-danger" *ngIf="dia.invalid && (dia.dirty || dia.touched)">
+            <div *ngIf="dia.errors.required">
+              dia requerido
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button class="btn btn-primary" role="button" (click)='calcularHoras()'>Calcular</button>
+
+
+        </div>
+      </div>
+
+
+    </form>
+
+  </div>
+</div>
