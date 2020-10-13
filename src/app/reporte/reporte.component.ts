@@ -10,7 +10,7 @@ import { tap } from 'rxjs/operators';
 })
 export class reporteComponent implements OnInit {
 
-  reportes: Reporte[] = [];
+ reportes: Reporte[];
 
   constructor(private reporteService: ReporteService) { }
 

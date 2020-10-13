@@ -1,8 +1,13 @@
-export class Hora {
+export default class Hora {
   id?: number;
-  codigoTecnico: string;
+
+  hnormales:string;
+  hnocturnas:string;
+  hdominicales:string;
+  hextraNormales:string;
+  hrextraNocturnas:string;
+  hextraDominicales:string;
+  codigo:string;
   diaSemana:number;
-  horaInicio:string;
-  horaFinal: string;
 
 }

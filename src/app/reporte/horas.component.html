@@ -7,17 +7,17 @@
       <div class="form-group row">
         <label for="codigo" class="col-form-label col-sm-2">Codigo tecnico</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="hora.codigoTecnico" name="codigo" #codigo="ngModel">
+          <input type="text" class="form-control" [(ngModel)]="hora.codigo" name="codigo" #codigo="ngModel">
 
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="dia" class="col-form-label col-sm-2">Dia de la semana</label>
+        <label for="diaSemana" class="col-form-label col-sm-2">Dia de la semana</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="hora.diaSemana" name="dia" #dia="ngModel">
-          <div class="alert alert-danger" *ngIf="dia.invalid && (dia.dirty || dia.touched)">
-            <div *ngIf="dia.errors.required">
+          <input type="text" class="form-control" [(ngModel)]="hora.diaSemana" name="diaSemana" #diaSemana="ngModel">
+          <div class="alert alert-danger" *ngIf="diaSemana.invalid && (diaSemana.dirty || diaSemana.touched)">
+            <div *ngIf="diaSemana.errors.required">
               dia requerido
             </div>
           </div>
@@ -29,12 +29,36 @@
         <div class="col-sm-6">
           <button class="btn btn-primary" role="button" (click)='calcularHoras()'>Calcular</button>
 
-
         </div>
       </div>
-
 
     </form>
 
   </div>
+  <div class="container">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Horas normales</th>
+            <th>Horas nocturnas</th>
+            <th>Horas dominicales</th>
+            <th>Horas extra normales</th>
+            <th>Horas extra nocturnas</th>
+            <th>Horas extra dominicales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr >
+            <td>{{hora.hnormales}}</td>
+            <td>{{hora.hnocturnas}}</td>
+            <td>{{hora.hdominicales}}</td>
+            <td>{{hora.hextraNormales}}</td>
+            <td>{{hora.hrextraNocturnas}}</td>
+            <td>{{hora.hextraDominicales}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
 </div>

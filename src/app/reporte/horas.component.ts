@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReporteService } from './reporte.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Hora } from './hora';
+import  Hora from './hora';
 
 @Component({
   selector: 'app-horas',
@@ -11,9 +11,13 @@ import { Hora } from './hora';
 export class HorasComponent implements OnInit {
 
   hora: Hora = new Hora();
+  codigo: string;
+  diaSemana: number;
 
   titulo: string = 'Horas de servicio';
-  constructor() {
+  constructor(private reporteService: ReporteService,
+    private router: Router,
+    public activatedRoute: ActivatedRoute) {
 
   }
   ngOnInit() {
@@ -21,7 +25,13 @@ export class HorasComponent implements OnInit {
   }
 
   calcularHoras() {
-    alert("por implementar");
+    this.reporteService.calcularHoras(this.codigo,this.diaSemana).subscribe(
+      data =>{
+        this.hora = data;
+      },
+      err =>{
+        console.error(err);
+      });
 
   }
 

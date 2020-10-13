@@ -21,8 +21,7 @@ export class FormComponent implements OnInit {
     public activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.reporteService.getReportes()
-    .subscribe(reportes => this.reportes = reportes);
+    this.cargarReporte();
   }
 
   cargarReporte(): void {

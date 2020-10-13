@@ -6,6 +6,7 @@ import { Observable, throwError } from 'rxjs';
 import swal from 'sweetalert2';
 
 import { Router } from '@angular/router';
+import Hora from './hora';
 
 @Injectable()
 export class ReporteService {
@@ -13,7 +14,12 @@ export class ReporteService {
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
+  private reportes: Reporte[];
+
+
   constructor(private http: HttpClient, private router: Router) { }
+
+
 
   public getReportes(): Observable<Reporte[]> {
     return this.http.get<Reporte[]>(this.urlEndPoint);
@@ -37,6 +43,11 @@ export class ReporteService {
     );
   }
 
- 
+  public calcularHoras(codigo:string, numeroSemana:number):Observable<Hora>{
+    return this.http.get<Hora>(`${this.urlEndPoint}/codigo/${codigo}/semana/${numeroSemana}`)
+
+  }
+
+
 
 }
