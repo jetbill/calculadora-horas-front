@@ -7,14 +7,16 @@ import swal from 'sweetalert2';
 
 import { Router } from '@angular/router';
 import Hora from './hora';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ReporteService {
-  private urlEndPoint: string = 'http://localhost:8090/api/v1/reporte';
+
+  private urlEndPoint = environment.localUrl+'/api/v1/reporte';
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  private reportes: Reporte[];
+  //private reportes: Reporte[];
 
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -43,8 +45,9 @@ export class ReporteService {
     );
   }
 
-  public calcularHoras(codigo:string, numeroSemana:number):Observable<Hora>{
-    return this.http.get<Hora>(`${this.urlEndPoint}/codigo/${codigo}/semana/${numeroSemana}`)
+  public calcularHoras(codigo:string, diaSemana:number):Observable<Hora>{
+    const url = `${this.urlEndPoint}/codigo/${codigo}/semana/${diaSemana}`
+    return this.http.get<Hora>(url);
 
   }
 

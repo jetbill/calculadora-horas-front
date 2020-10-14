@@ -7,7 +7,7 @@
       <div class="form-group row">
         <label for="codigo" class="col-form-label col-sm-2">Codigo tecnico</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="hora.codigo" name="codigo" #codigo="ngModel">
+          <input type="text" class="form-control"  name="codigo" #codigo>
 
         </div>
       </div>
@@ -15,19 +15,15 @@
       <div class="form-group row">
         <label for="diaSemana" class="col-form-label col-sm-2">Dia de la semana</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="hora.diaSemana" name="diaSemana" #diaSemana="ngModel">
-          <div class="alert alert-danger" *ngIf="diaSemana.invalid && (diaSemana.dirty || diaSemana.touched)">
-            <div *ngIf="diaSemana.errors.required">
-              dia requerido
-            </div>
-          </div>
+          <input type="text" class="form-control" name="diaSemana"  #diaSemana>
+
         </div>
       </div>
 
 
       <div class="form-group row">
         <div class="col-sm-6">
-          <button class="btn btn-primary" role="button" (click)='calcularHoras()'>Calcular</button>
+          <button class="btn btn-primary" role="button" (click)='calcularHoras(codigo.value,diaSemana.value)'>Calcular</button>
 
         </div>
       </div>
@@ -35,7 +31,10 @@
     </form>
 
   </div>
-  <div class="container">
+  <ng-container *ngIf="notFound">
+    Tecnico no encontrado
+  </ng-container>
+  <div class="container" *ngIf="hora">
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -45,16 +44,18 @@
             <th>Horas extra normales</th>
             <th>Horas extra nocturnas</th>
             <th>Horas extra dominicales</th>
+            <th>Total</th>
           </tr>
         </thead>
         <tbody>
-          <tr >
-            <td>{{hora.hnormales}}</td>
-            <td>{{hora.hnocturnas}}</td>
-            <td>{{hora.hdominicales}}</td>
-            <td>{{hora.hextraNormales}}</td>
-            <td>{{hora.hrextraNocturnas}}</td>
-            <td>{{hora.hextraDominicales}}</td>
+          <tr>
+            <td>{{hora.horasNormales}}</td>
+            <td>{{hora.horasNocturnas}}</td>
+            <td>{{hora.horasDominicales}}</td>
+            <td>{{hora.horasExtrasNormales}}</td>
+            <td>{{hora.horasExtrasNocturnas}}</td>
+            <td>{{hora.horasExtrasDominicales}}</td>
+            <td>{{hora.horasTotales}}</td>
           </tr>
 
         </tbody>

@@ -9,12 +9,12 @@ import  Hora from './hora';
 })
 
 export class HorasComponent implements OnInit {
+  notFound: boolean = false;
+  hora: Hora;
 
-  hora: Hora = new Hora();
-  codigo: string;
-  diaSemana: number;
 
   titulo: string = 'Horas de servicio';
+
   constructor(private reporteService: ReporteService,
     private router: Router,
     public activatedRoute: ActivatedRoute) {
@@ -24,14 +24,17 @@ export class HorasComponent implements OnInit {
 
   }
 
-  calcularHoras() {
-    this.reporteService.calcularHoras(this.codigo,this.diaSemana).subscribe(
-      data =>{
-        this.hora = data;
+  calcularHoras(codigo:string,diaSemana:number) {
+    this.notFound;
+    this.hora = null;
+    this.reporteService.calcularHoras(codigo,diaSemana).subscribe(
+      (horaDelaApi:Hora)=>{
+        this.hora = horaDelaApi;
       },
-      err =>{
-        console.error(err);
-      });
+      (err:any)=>{
+        console.log(err)
+      }
+      );
 
   }
 

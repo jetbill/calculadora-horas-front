@@ -1,13 +1,13 @@
-export default class Hora {
+export default interface Hora {
   id?: number;
 
-  hnormales:string;
-  hnocturnas:string;
-  hdominicales:string;
-  hextraNormales:string;
-  hrextraNocturnas:string;
-  hextraDominicales:string;
-  codigo:string;
-  diaSemana:number;
+  horasNormales:number;
+  horasNocturnas:number;
+  horasDominicales:number;
+  horasExtrasNormales:number;
+  horasExtrasNocturnas:number;
+  horasExtrasDominicales:number;
+  horasTotales:number;
+
 
 }
