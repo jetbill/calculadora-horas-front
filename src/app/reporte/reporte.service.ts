@@ -12,7 +12,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class ReporteService {
 
-  private urlEndPoint = environment.localUrl+'/api/v1/reporte';
+  private urlEndPoint = environment.url+'/api/v1/reporte';
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
